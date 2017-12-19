@@ -1,0 +1,34 @@
+1.环境
+ 1.LinuxX64
+ 2.依赖库
+   ffmpeg
+   libcurl
+   libsqlite3
+ 3.GLIBC 2.19以上，GCC 4.82以上
+2.文件说明
+arcsoft_afd_samplecode.cpp           人脸位置检测
+arcsoft_fsdk_face_detection.h        人脸位置检测
+libarcsoft_fsdk_face_detection.so    人脸位置检测库
+arcsoft_afr_samplecode.cpp           人脸特征比对
+arcsoft_fsdk_face_recognition.h      人脸特征比对
+libarcsoft_fsdk_face_recognition.so  人脸特征比对库
+facecode.cpp                         人脸比对
+facecode.h                           人脸比对
+merror.h                             定义错误码                         
+asvloffscreen.h                      定义yuv格式的采样方式
+amcomdef.h                           定义平台的基本数据类型
+3.编译命令
+gcc -o facecomparsion facecode.cpp arcsoft_afr_samplecode.cpp arcsoft_afd_samplecode.cpp -L ./ -larcsoft_fsdk_face_detection -larcsoft_fsdk_face_recognition
+4.流程
+ 1.将jpg格式转成yuv格式
+ 2.检测图片的人脸位置
+ 3.获取人脸特征，进行人脸比对
+5.人脸图片规格要求
+ 1.480*640
+ 2. jpg（虹软Linux版人脸比对，图片格式必须为yuv）
+6.待改进的
+ 1.支撑图片大小可配置
+ 2.appid和appkey可配置
+ 3.支撑多种图片格式（实际上也支撑了，只要把对应的图片格式转换yuv） 
+ 4.yuv的颜色格式（采样）
+ 5.自定义图片格式转换方法（替换ffmpeg，减少依赖）
